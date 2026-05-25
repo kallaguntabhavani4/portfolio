@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kallagunta Bhavani — Artificial Intelligence Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --border: #1e1e2e;
+      --accent: #6c63ff;
+      --accent2: #a78bfa;
+      --text: #e8e8f0;
+      --muted: #7a7a9a;
+      --card: #13131f;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px; font-weight: 800;
+      color: var(--accent2);
+      letter-spacing: -1px;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--muted);
+      font-size: 13px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 120px 48px 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(108,99,255,.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-label {
+      font-size: 12px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px;
+    }
+    .hero-name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(42px, 7vw, 88px);
+      font-weight: 800; line-height: 1.0;
+      letter-spacing: -3px; margin-bottom: 16px;
+    }
+    .hero-name span { color: var(--accent2); }
+    .hero-role {
+      font-size: clamp(16px, 2.5vw, 22px);
+      color: var(--muted); font-weight: 400; margin-bottom: 28px;
+      letter-spacing: .02em;
+    }
+    .hero-bio {
+      max-width: 560px; color: var(--muted);
+      font-size: 15px; margin-bottom: 40px; line-height: 1.8;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 26px; border-radius: 6px;
+      font-size: 13px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase;
+      text-decoration: none; transition: all .2s; cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--accent); color: #fff;
+    }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-socials { display: flex; gap: 14px; margin-top: 24px; }
+    .hero-socials a {
+      display: inline-flex; align-items: center; gap: 7px;
+      color: var(--muted); font-size: 13px; text-decoration: none;
+      transition: color .2s;
+    }
+    .hero-socials a:hover { color: var(--accent2); }
+    .scroll-hint {
+      margin-top: 60px; color: var(--muted); font-size: 12px; letter-spacing: .1em;
+      text-transform: uppercase; display: flex; align-items: center; gap: 10px;
+    }
+    .scroll-hint::after {
+      content: ''; display: block; width: 40px; height: 1px; background: var(--muted);
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 100px 48px; max-width: 1100px; margin: 0 auto; }
+    .section-tag {
+      font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 4vw, 48px); font-weight: 800;
+      letter-spacing: -2px; margin-bottom: 48px; line-height: 1.1;
+    }
+    .divider { width: 100%; height: 1px; background: var(--border); }
+
+    /* ── ABOUT ── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .about-text p { color: var(--muted); margin-bottom: 16px; line-height: 1.85; }
+    .about-text strong { color: var(--text); }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .stat-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 24px 20px;
+    }
+    .stat-number {
+      font-family: 'Syne', sans-serif;
+      font-size: 36px; font-weight: 800; color: var(--accent2); letter-spacing: -1px;
+    }
+    .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; letter-spacing: .05em; }
+
+    /* ── SKILLS ── */
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+    .skill-tag {
+      background: var(--card); border: 1px solid var(--border);
+      color: var(--text); padding: 8px 18px; border-radius: 30px;
+      font-size: 13px; font-weight: 500;
+      transition: border-color .2s, color .2s;
+    }
+    .skill-tag:hover { border-color: var(--accent); color: var(--accent2); }
+
+    /* ── EXPERIENCE ── */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .timeline-item {
+      display: grid; grid-template-columns: 1px 1fr;
+      gap: 0 32px;
+    }
+    .timeline-line {
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .timeline-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--accent); flex-shrink: 0; margin-top: 6px;
+    }
+    .timeline-track {
+      flex: 1; width: 1px; background: var(--border); margin-top: 8px; min-height: 30px;
+    }
+    .timeline-item:last-child .timeline-track { display: none; }
+    .timeline-content {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 28px 32px; margin-bottom: 24px;
+    }
+    .timeline-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
+    .timeline-role { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -.5px; }
+    .timeline-company { color: var(--accent2); font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+    .timeline-period { font-size: 12px; color: var(--muted); }
+    .timeline-content ul { padding-left: 18px; margin-top: 14px; }
+    .timeline-content li { color: var(--muted); margin-bottom: 8px; font-size: 14px; line-height: 1.7; }
+
+    /* ── EDUCATION ── */
+    .edu-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 36px 40px;
+      display: flex; gap: 24px; align-items: flex-start;
+    }
+    .edu-icon { font-size: 36px; }
+    .edu-degree { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; letter-spacing: -.5px; margin-bottom: 6px; }
+    .edu-school { color: var(--accent2); font-weight: 600; margin-bottom: 12px; }
+    .edu-meta { display: flex; flex-wrap: wrap; gap: 14px; }
+    .edu-meta span { font-size: 13px; color: var(--muted); }
+
+    /* ── PROJECTS ── */
+    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .project-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 32px 28px;
+      transition: border-color .3s, transform .2s;
+    }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .project-icon { font-size: 32px; margin-bottom: 16px; }
+    .project-title { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; letter-spacing: -.5px; margin-bottom: 12px; }
+    .project-desc { color: var(--muted); font-size: 14px; line-height: 1.75; margin-bottom: 20px; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .project-tag {
+      background: rgba(108,99,255,.12); color: var(--accent2);
+      padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500;
+    }
+
+    /* ── CONTACT ── */
+    .contact-intro { color: var(--muted); font-size: 15px; line-height: 1.85; margin-bottom: 40px; max-width: 600px; }
+    .contact-items { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; }
+    .contact-item {
+      color: var(--muted); text-decoration: none; font-size: 14px;
+      transition: color .2s;
+    }
+    .contact-item:hover { color: var(--accent2); }
+    .contact-email {
+      display: inline-block;
+      border: 1px solid var(--border); border-radius: 6px;
+      padding: 10px 18px; color: var(--text); font-size: 14px;
+      text-decoration: none; transition: border-color .2s, color .2s;
+    }
+    .contact-email:hover { border-color: var(--accent); color: var(--accent2); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 40px 48px;
+      border-top: 1px solid var(--border);
+      color: var(--muted); font-size: 13px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 60px; }
+      section { padding: 70px 24px; }
+      .about-grid, .contact-grid, .projects-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .edu-card { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">KB.</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label">Portfolio</div>
+  <h1 class="hero-name">Kallagunta<br /><span>Bhavani</span></h1>
+  <!-- CHANGED: "Artificial Intelligence Student" → "Artificial Intelligence Engineer" -->
+  <p class="hero-role">Artificial Intelligence Engineer</p>
+  <p class="hero-bio">
+    Aspiring Artificial Intelligence Engineer with hands-on experience in Python,
+    IoT-based systems, and web development. Passionate about building intelligent
+    systems and real-world AI applications.
+  </p>
+  <div class="hero-actions">
+    <!-- REMOVED: Photo icon button -->
+    <!-- REMOVED: Resume icon/button -->
+    <a href="mailto:kallaguntabhavani5@gmail.com" class="btn btn-primary">Copy Email</a>
+    <a href="https://www.linkedin.com/in/kallagunta-bhavani-104099382" target="_blank" class="btn btn-ghost">LinkedIn</a>
+    <a href="https://github.com/kallaguntabhavani4" target="_blank" class="btn btn-ghost">GitHub</a>
+  </div>
+  <div class="scroll-hint">Scroll to explore</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-tag">01 / Introduction</div>
+  <h2 class="section-title">About Me</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm <strong>Kallagunta Bhavani</strong>, a final-year B.Tech student in <strong>Artificial Intelligence</strong> at QIS College of Engineering and Technology, Andhra Pradesh. I'm passionate about building intelligent systems that solve real-world problems.</p>
+      <p>My journey spans <strong>Python full-stack development</strong>, IoT systems, and AI application development. I've participated in SRUJANA 2026 hackathon in Visakhapatnam and multiple competitive exhibitions to showcase my projects.</p>
+      <p>I completed an internship at <strong>Edu Skills</strong> focused on Python full-stack development, sharpening my ability to build end-to-end applications. I'm currently seeking opportunities to apply my AI knowledge in impactful roles.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="stat-number">2027</div>
+        <div class="stat-label">Expected Graduation</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">AI</div>
+        <div class="stat-label">B.Tech Specialisation</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">2+</div>
+        <div class="stat-label">Hackathons &amp; Competitions</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">1</div>
+        <div class="stat-label">Industry Internship</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-tag">02 / Expertise</div>
+  <h2 class="section-title">Skills &amp; Technologies</h2>
+  <div class="skills-grid">
+    <span class="skill-tag">Python</span>
+    <span class="skill-tag">HTML5</span>
+    <span class="skill-tag">Machine Learning</span>
+    <span class="skill-tag">Data Preprocessing</span>
+    <span class="skill-tag">IoT Systems</span>
+    <span class="skill-tag">Pandas</span>
+    <span class="skill-tag">NumPy</span>
+    <span class="skill-tag">Git &amp; GitHub</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-tag">03 / Career</div>
+  <h2 class="section-title">Experience</h2>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-line">
+        <div class="timeline-dot"></div>
+        <div class="timeline-track"></div>
+      </div>
+      <div class="timeline-content">
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-role">Python Full Stack Intern</div>
+            <div class="timeline-company">Edu Skills</div>
+          </div>
+          <div class="timeline-period">2024 — College Duration</div>
+        </div>
+        <ul>
+          <li>Developed end-to-end Python web applications using Flask, integrating backend logic with responsive HTML/CSS frontends.</li>
+          <li>Gained hands-on experience in database design and REST API development, building data-driven features for real-world use cases.</li>
+          <li>Collaborated with mentors to debug, optimise, and deploy Python applications, improving code quality and development workflow.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-line">
+        <div class="timeline-dot"></div>
+        <div class="timeline-track"></div>
+      </div>
+      <div class="timeline-content">
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-role">Hackathon Participant</div>
+            <div class="timeline-company">SRUJANA 2026 — Visakhapatnam</div>
+          </div>
+          <div class="timeline-period">2026</div>
+        </div>
+        <ul>
+          <li>Participated in SRUJANA 2026, a competitive hackathon conducted in Visakhapatnam, ideating and prototyping an AI/tech solution within a time-constrained environment.</li>
+          <li>Demonstrated project to judges and peers, receiving feedback that sharpened presentation and technical communication skills.</li>
+          <li>Collaborated with a team to integrate multiple technologies into a working prototype under pressure.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-line">
+        <div class="timeline-dot"></div>
+        <div class="timeline-track"></div>
+      </div>
+      <div class="timeline-content">
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-role">Project Exhibitor</div>
+            <div class="timeline-company">Multiple Technical Competitions</div>
+          </div>
+          <div class="timeline-period">2026</div>
+        </div>
+        <ul>
+          <li>Showcased AI/ML and IoT-based projects at several intra and inter-college technical competitions, earning recognition for innovation.</li>
+          <li>Built and presented real-time data analysis systems using Python and IoT sensors as part of academic project exhibitions.</li>
+          <li>Developed strong skills in explaining complex technical concepts to non-technical audiences through repeated project demonstrations.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-tag">04 / Academia</div>
+  <h2 class="section-title">Education</h2>
+  <div class="edu-card">
+    <div class="edu-icon">🎓</div>
+    <div>
+      <div class="edu-degree">B.Tech — Artificial Intelligence</div>
+      <div class="edu-school">QIS College of Engineering and Technology</div>
+      <div class="edu-meta">
+        <span>📍 Andhra Pradesh, India</span>
+        <span>📅 2023 – 2027</span>
+        <span>🏫 4th Year (Pursuing)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-tag">05 / Work</div>
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-icon">⛑️</div>
+      <div class="project-title">IoT &amp; ML Based Smart Helmet for Mine Workers</div>
+      <p class="project-desc">A smart safety helmet designed for mine workers that uses IoT sensors and machine learning to monitor real-time environmental conditions like gas levels, temperature, and humidity. Sends instant alerts to workers and supervisors when dangerous conditions are detected, improving underground safety.</p>
+      <div class="project-tags">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">IoT</span>
+        <span class="project-tag">Machine Learning</span>
+        <span class="project-tag">Sensor Integration</span>
+        <span class="project-tag">Real-time Alerts</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">🤖</div>
+      <div class="project-title">Offline LLM with Customized Avatar Interface</div>
+      <p class="project-desc">A fully offline large language model application with a personalized avatar interface that runs without internet connectivity. Users can interact with the AI assistant through a custom-built visual avatar, enabling private and secure conversations without any cloud dependency.</p>
+      <div class="project-tags">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">LLM</span>
+        <span class="project-tag">Offline AI</span>
+        <span class="project-tag">Avatar Interface</span>
+        <span class="project-tag">NLP</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-tag">06 / Connect</div>
+  <h2 class="section-title">Get In Touch</h2>
+  <p class="contact-intro">I'm actively looking for opportunities in Artificial Intelligence and software development. Whether you have a project idea, an internship, or just want to connect — my inbox is always open.</p>
+  <div class="contact-items">
+    <a href="mailto:kallaguntabhavani5@gmail.com" class="contact-email">&lt;kallaguntabhavani5@gmail.com&gt;</a>
+    <a href="https://www.linkedin.com/in/kallagunta-bhavani-104099382" target="_blank" class="contact-item">LinkedIn</a>
+    <a href="https://github.com/kallaguntabhavani4" target="_blank" class="contact-item">GitHub</a>
+    <a href="#" class="contact-item">Resume</a>
+    <a href="mailto:kallaguntabhavani5@gmail.com" class="contact-item">Andhra Pradesh, India</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  Designed &amp; Built by Kallagunta Bhavani · 2025 · All rights reserved.
+</footer>
+
+</body>
+</html>
